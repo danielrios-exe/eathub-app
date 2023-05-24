@@ -1,26 +1,28 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from 'react';
+import { BrowserRouter, useRoutes } from 'react-router-dom';
+import LoginComponent from './pages/Login';
+import FeedComponent from './pages/Feed';
+import RestaurantComponent from './pages/Restaurant';
+import CustomerComponent from './pages/Customer';
+import NotFoundComponent from './pages/NotFoundComponent';
 
-function App() {
+const Routes = () => {
+  let routes = useRoutes([
+    { path: '/', element: <LoginComponent /> },
+    { path: '/home', element: <FeedComponent /> },
+    { path: '/restaurant', element: <RestaurantComponent /> },
+    { path: '/customer', element: <CustomerComponent /> },
+    { path: '*', element: <NotFoundComponent /> },
+  ]);
+  return routes;
+};
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
