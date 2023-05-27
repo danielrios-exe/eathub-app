@@ -32,11 +32,13 @@ const MenuPageComponent = () => {
     return restaurantId;
   };
 
+  const roleId = localStorage.getItem('roleId');
+
   return (
     <Wrapper>
       {menu ? <MenuComponent menu={menu} /> : null}
       {menu ? <ReviewComponent restaurantId={menu?.restaurant_id} /> : null}
-      {menu ? (
+      {menu && roleId !== '3' ? (
         <CreateReviewComponent restaurantId={menu?.restaurant_id} />
       ) : null}
     </Wrapper>
