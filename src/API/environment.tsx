@@ -2,13 +2,11 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 const appMode = 'PRODUCTION';
-const blobUrl =
-  'https://eathubaccount.blob.core.windows.net/?sv=2022-11-02&ss=bfqt&srt=sc&sp=rwdlacupiytfx&se=2023-06-02T09:01:38Z&st=2023-05-26T01:01:38Z&spr=https&sig=ppSjmysUzmAZ4kQxhqWEKd%2FED%2B3C9DbQjJxiqPPRs8U%3D';
 
 export const getUrl = () => {
   let AUTH_URL: string, API_URL: string, APP_URL: string;
 
-  if (appMode !== 'PRODUCTION') {
+  if (appMode === 'PRODUCTION') {
     AUTH_URL = 'https://eathub-backend-danielrios-exe.vercel.app/api/auth';
     API_URL = 'https://eathub-backend-danielrios-exe.vercel.app/api/';
     APP_URL = '';
