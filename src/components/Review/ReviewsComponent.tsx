@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import API from '../../API/environment';
+import { beautifyDate } from '../../functions/dates';
 
 interface Review {
   id: number;
@@ -79,11 +80,11 @@ const ReviewComponent = ({ restaurantId }: ReviewComponentProps) => {
       {reviews &&
         reviews.map((review) => {
           return (
-            <div className="flex min-h-full flex-1 flex-col justify-center py-3 px-3 mt-0 mb-8 lg:px-4 bg-white w-full rounded-lg shadow-md h-20">
+            <div className="flex h-fit flex-1 flex-col justify-center py-4 px-3 mt-0 mb-8 lg:px-4 bg-white w-full rounded-lg shadow-md">
               <div className="flex flex-col w-full items-start">
                 <span className="text-sm font-semibold">{review.username}</span>
                 <span className="text-xs text-gray-500">
-                  {review.created_at}
+                  {beautifyDate(review.created_at)}
                 </span>
                 <div className="flex flex-row justify-between mt-3 w-full">
                   <span className="text-sm">{review.text}</span>
