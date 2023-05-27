@@ -4,6 +4,7 @@ import MenuComponent from '../../components/Menu/Menu';
 import API from '../../API/environment';
 import { Menu } from '../../components/Menu/Menu/menu-types';
 import ReviewComponent from '../../components/Review/ReviewsComponent';
+import { CreateReviewComponent } from '../../components/Review';
 
 const MenuPageComponent = () => {
   const [menu, setMenu] = useState<Menu>();
@@ -34,7 +35,10 @@ const MenuPageComponent = () => {
   return (
     <Wrapper>
       {menu ? <MenuComponent menu={menu} /> : null}
-      <ReviewComponent />
+      {menu ? <ReviewComponent restaurantId={menu?.restaurant_id} /> : null}
+      {menu ? (
+        <CreateReviewComponent restaurantId={menu?.restaurant_id} />
+      ) : null}
     </Wrapper>
   );
 };
