@@ -47,8 +47,9 @@ const CreateMenu = () => {
   }, [mealType]);
 
   const getMealTypes = async () => {
-    console.log('test', API.API_URL.defaults.headers.common['Authorization']);
-
+    const token = localStorage.getItem('token');
+    // Bearer
+    API.API_URL.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     const request = await API.API_URL.get('/menu/mealTypes');
 
     console.log('request', request);
@@ -68,7 +69,7 @@ const CreateMenu = () => {
     setMenuDetails([...menuDetails, menuDetail]);
     setName('');
     setPrice(0);
-    setMealType(undefined);
+    setMealType(mealTypes[0]);
   };
 
   const createMenu = async () => {
